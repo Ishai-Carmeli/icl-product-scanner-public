@@ -76,16 +76,17 @@ Reduced scanning latency by **52%** and improved scanning accuracy to **99%**. T
       - On cache miss, fetch the product along with all its variants from Mashbir's Search API using the HTTP agent.
       - Format the data and publish it to Google Pub/Sub to write documents in the background. 
       - Return the response to the user as quickly as possible.
-   - **Results:** After messuring for a few days, I got the following data:
-      - cache_hits: 227
-      - cache_misses: 825
-      - hit_to_miss_ratio: 0.275
-      - avg_cache_get_ms: 45
-      - avg_pubsub_publish_ms: 55
-      - avg_fetching_time_mashbir_ms: 413
-      - avg_req_process_time_ms: 414
-      - connection_reuse_to_total_ratio: 0.915
-   - **Conculusion**: While the initial hypothesis suggested higher potential hit rates, the production results show a ~27.5% hit rate, allowing those requests to be handled in ~50ms (avg_cache_get_ms). Factoring in the background publishing overhead during a cache miss, the overall average request processing time remains similar to directly fetching from Mashbir. Ultimately, the TCP connection pooling and the Min Instance Scheduling provided the most significant optimization for average latency.
+   - **Results:** After messuring for 3 weeks, I got the following data:
+      - cache_hits: 1002
+      - cache_misses: 1463
+      - hit_to_miss_ratio: 0.685
+      - hit_percentages: 0.406
+      - avg_cache_get_ms: 39.559
+      - avg_pubsub_publish_ms: 48.487
+      - avg_fetching_time_mashbir_ms: 279.806
+      - avg_req_process_time_ms: 221.306
+      - connection_reuse_to_total_ratio: 0.913
+   - **Conclusion**: The production results show a ~40.6% hit rate, allowing those requests to be handled in under ~50ms (avg_cache_get_ms). Factoring in the background publishing overhead during a cache miss, the overall average request processing time is shorter than directly fetching from Mashbir. Ultimately, the TCP connection pooling and the Min Instance Scheduling provided the most significant optimization for average latency, and caching made it so that fetching products from my cloud function is faster than fetching directly from Mashbir's API. 
    - **Next Steps:** I will continue to measure the cache hit/miss rate over the next few weeks. I expect avg_req_process_time_ms to drop even further as the database populates with more products.
 
 ## Demo
