@@ -30,7 +30,7 @@ To ensure security and prevent potential request overloads, the API was routed t
 
 ### Phase 3: Maintenance and Optimizations
 
-Reduced scanning latency by **52%** and improved scanning accuracy to **99%**. The following optimizations and fixes were implemented:
+Reduced scanning latency from ~6.5 to ~3 seconds and improved scanning accuracy to more than **95%**. The following optimizations and fixes were implemented:
 
 1. **API Integration Fixes**
    - Enabled fetching for items that are out of stock from the Mashbir API.
