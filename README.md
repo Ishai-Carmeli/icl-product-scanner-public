@@ -4,7 +4,7 @@ A full-stack web application that streamlines the real-time product location pro
 
 **Client:** Pick & Pack Ltd (ICL Group)  
 **Tech Stack:** React, Node.js, Google Cloud Functions, Tesseract.js  
-**Scale:** Actively used daily on the warehouse floor, sustaining 25,000+ scans over 6 months.
+**Scale:** Actively used daily on the warehouse floor, sustaining 27,700+ scans over 7 months (Since end of September, 2025)
 
 ## The Challenge
 
