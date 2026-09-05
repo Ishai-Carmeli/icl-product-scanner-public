@@ -83,7 +83,7 @@ Reduced scanning latency from ~6.5 to ~3 seconds and improved scanning accuracy 
       - hit_percentages: 0.406
       - avg_cache_get_ms: 39.559
       - avg_pubsub_publish_ms: 48.487
-      - avg_fetching_time_mashbir_ms: 9.806
+      - avg_fetching_time_mashbir_ms: 279.806
       - avg_req_process_time_ms: 221.306
       - connection_reuse_to_total_ratio: 0.913
    - **Conclusion**: The production results show a ~40.6% hit rate, allowing those requests to be handled in under ~50ms (avg_cache_get_ms). Factoring in the background publishing overhead during a cache miss, the overall average request processing time is shorter than directly fetching from Mashbir. Ultimately, the TCP connection pooling and the Min Instance Scheduling provided the most significant optimization for average latency, and caching made it so that fetching products from my cloud function is faster than fetching directly from Mashbir's API. 
